@@ -1,4 +1,11 @@
 import "./style.css"
-import Playground from "./sketches/Playground"
+import SketchList from "./sketches/list"
 
-Playground.start()
+const sketchIdx = parseInt(location.hash.replace(/#|\//g, "") || "0")
+const toRenderSketch = SketchList[sketchIdx]
+
+if (toRenderSketch) {
+  toRenderSketch.start()
+} else {
+  // TODO: render 404
+}
