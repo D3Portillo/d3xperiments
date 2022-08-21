@@ -1,33 +1,35 @@
 import Sketch from "../Sketch"
 
 class Playground extends Sketch {
-  setup() {
-    this.createCanvas(400, 400)
-    this.background(255, 255, 255)
+  renderCount = 0
 
-    // translucent stroke using alpha value
-    this.stroke(0, 0, 0, 15)
+  setup() {
+    this.stroke(0, 0, 0, 20)
   }
 
   draw() {
-    // draw two random chords each frame
-    this.randomChord()
-    this.randomChord()
+    this.renderCount++
+    if (this.renderCount < 2000) {
+      // Stop rendering lines at 2000 renderCount
+      this.randomChord()
+      this.randomChord()
+    }
   }
 
   randomChord() {
-    // find a random point on a circle
-    let angle1 = this.random(0, 2 * this.PI)
-    let xpos1 = 200 + 200 * this.cos(angle1)
-    let ypos1 = 200 + 200 * this.sin(angle1)
+    const getRandomPoint = () => {
+      const hs = this.canvasSize * 0.5
+      const randomAngle = this.random(0, 2 * Math.PI)
+      return {
+        x: hs + hs * this.cos(randomAngle),
+        y: hs + hs * this.sin(randomAngle),
+      }
+    }
+    const pointA = getRandomPoint()
+    const pointB = getRandomPoint()
 
-    // find another random point on the circle
-    let angle2 = this.random(0, 2 * this.PI)
-    let xpos2 = 200 + 200 * this.cos(angle2)
-    let ypos2 = 200 + 200 * this.sin(angle2)
-
-    // draw a line between them
-    this.line(xpos1, ypos1, xpos2, ypos2)
+    // Draw a line between the 2 random them
+    this.line(pointA.x, pointA.y, pointB.x, pointB.y)
   }
 }
 
