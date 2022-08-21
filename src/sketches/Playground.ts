@@ -1,6 +1,6 @@
 import Sketch from "../Sketch"
 
-class Playground extends Sketch {
+export default class Playground extends Sketch {
   renderCount = 0
 
   setup() {
@@ -32,5 +32,3 @@ class Playground extends Sketch {
     this.line(pointA.x, pointA.y, pointB.x, pointB.y)
   }
 }
-
-export default Playground
