@@ -2,8 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
+body,
+html {
   background: white;
+  overflow-x: hidden;
 }
 
 #app {
