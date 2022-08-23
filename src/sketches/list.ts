@@ -1,6 +1,7 @@
+import SketchClass from "../Sketch"
 import Playground from "./Playground"
 import Noise from "./Noise"
-import SketchClass from "../Sketch"
+import Matter from "./Matter"
 
 type Sketch = typeof SketchClass
 const list: Array<Sketch> = []
@@ -31,6 +32,11 @@ setSketchList(
     sketch: Noise,
     name: "Noise",
     url: __getSketchURL("Noise.ts"),
+  },
+  {
+    sketch: Matter,
+    name: "Matter",
+    url: __getSketchURL("Matter.ts"),
   }
 )
 
